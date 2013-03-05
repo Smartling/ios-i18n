@@ -1,0 +1,10 @@
+
+"%.1f apples" = "%.1f apples";
+
+/* ##{1:plural} */
+"%.1f apples##{1:one}" = "One apple";
+"%.1f apples##{1:other}" = "%.1f apples";
+
+/* ##{1:plural} */
+"%@ apples##{1:one}" = "One apple";
+"%@ apples##{1:other}" = "%@ apples";

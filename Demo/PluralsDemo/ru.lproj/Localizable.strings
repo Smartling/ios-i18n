@@ -1,0 +1,14 @@
+
+"%.1f apples" = "%.1f яблок";
+
+/* ##{1:plural} */
+"%.1f apples##{1:one}" = "%.1f яблоко";
+"%.1f apples##{1:few}" = "%.1f яблока";
+"%.1f apples##{1:many}" = "%.1f яблок";
+"%.1f apples##{1:other}" = "%.1f яблок";
+
+/* ##{1:plural} */
+"%@ apples##{1:one}" = "%@ яблоко";
+"%@ apples##{1:few}" = "%@ яблока";
+"%@ apples##{1:many}" = "%@ яблок";
+"%@ apples##{1:other}" = "%@ яблок";
