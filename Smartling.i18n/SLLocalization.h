@@ -6,35 +6,34 @@
 //  Copyright (c) 2013 Smartling. All rights reserved.
 //
 
-#define SLPluralizedString(key, n, comment) \
-	({ \
-		__typeof__(n) _n = (n); \
-		[[SLResource instance] pluralizedStringWithKey:key value:&_n valueType:@encode(__typeof__(n))]; \
-	})
+// The following macros return localized string of the key, according to plural rule of the value n:
+//   SLPluralizedString(key, n, comment)
+//   SLPluralizedStringFromTable(key, tbl, n, comment)
+//   SLPluralizedStringFromTableInBundle(key, tbl, bundle, n, comment)
+//   SLPluralizedStringWithDefaultValue(key, tbl, bundle, n, val, comment)
 
 
-@interface SLResource : NSObject
+@interface NSBundle (Smartling_i18n)
 
-@property(retain, nonatomic) NSBundle *bundle;
-@property(retain, nonatomic) NSString *table;
-@property(retain, nonatomic, readonly) NSString *localization;	// the first value of bundle preferredLocalizations
-
-+ (SLResource *)instance;
-- (NSString *)pluralizedStringWithKey:(NSString *)key value:(float)value;
-- (NSString *)pluralizedStringWithKey:(NSString *)key value:(void *)value valueType:(const char *)valueType;
-
-
-#ifndef SL_EXTERN
-#if defined (__cplusplus)
-#define SL_EXTERN extern "C"
-#else
-#define SL_EXTERN extern
-#endif
-#endif
-
-// Returns one of: zero, one, two, few, many, other
-SL_EXTERN const char* pluralform(const char* lang, int n);
-SL_EXTERN const char* pluralformf(const char* lang, float n);
-
+- (NSString *)pluralizedStringWithKey:(NSString *)key defaultValue:(NSString *)defaultValue table:(NSString *)tableName pluralValue:(float)pluralValue NS_FORMAT_ARGUMENT(1);
 
 @end
+
+
+#define SL_FLOATVALUE(n) ({ \
+	__typeof__(n) _n = (n); \
+	floatvalue(&_n, @encode(__typeof__(n))); })
+
+#define SLPluralizedString(key, n, comment) ({ \
+	[[NSBundle mainBundle] pluralizedStringWithKey:key defaultValue:@"" table:nil pluralValue:SL_FLOATVALUE(n)]; })
+#define SLPluralizedStringFromTable(key, tbl, n, comment) ({ \
+	[[NSBundle mainBundle] pluralizedStringWithKey:key defaultValue:@"" table:(tbl) pluralValue:SL_FLOATVALUE(n)]; })
+#define SLPluralizedStringFromTableInBundle(key, tbl, bundle, n, comment) ({ \
+	[bundle pluralizedStringWithKey:key defaultValue:@"" table:(tbl) pluralValue:SL_FLOATVALUE(n)]; })
+#define SLPluralizedStringWithDefaultValue(key, tbl, bundle, n, val, comment) ({ \
+	[bundle pluralizedStringWithKey:key defaultValue:(val) table:(tbl) pluralValue:SL_FLOATVALUE(n)]; })
+
+// Returns one of: zero, one, two, few, many, other
+FOUNDATION_EXPORT const char* pluralform(const char* lang, int n);
+FOUNDATION_EXPORT const char* pluralformf(const char* lang, float n);
+FOUNDATION_EXPORT float floatvalue(const void* value, const char* valueType);

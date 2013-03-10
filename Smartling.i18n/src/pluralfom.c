@@ -1,6 +1,6 @@
 //
 //  pluralform.c
-//  localization
+//  Smartling.i18n
 //
 //  Originally created by Pavel Ivashkov on 2012-02-24.
 //  Copyright (c) 2012 Smartling. All rights reserved.

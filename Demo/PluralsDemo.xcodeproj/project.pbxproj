@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		C41AED3E16DB9B1700C34581 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C41AED3C16DB9B1700C34581 /* Localizable.strings */; };
 		C456588916E600CD00DDD353 /* pluralfom.c in Sources */ = {isa = PBXBuildFile; fileRef = C456588716E600CD00DDD353 /* pluralfom.c */; };
-		C456588A16E600CD00DDD353 /* SLResource.m in Sources */ = {isa = PBXBuildFile; fileRef = C456588816E600CD00DDD353 /* SLResource.m */; };
+		C464DEB716E775A7008B78D2 /* NSBundle+Smartling_i18n.m in Sources */ = {isa = PBXBuildFile; fileRef = C464DEB616E775A7008B78D2 /* NSBundle+Smartling_i18n.m */; };
+		C464DEBB16E7AB86008B78D2 /* floatvalue.m in Sources */ = {isa = PBXBuildFile; fileRef = C464DEBA16E7AB86008B78D2 /* floatvalue.m */; };
 		C490AAA116DB880600D7ECCF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C490AAA016DB880600D7ECCF /* UIKit.framework */; };
 		C490AAA316DB880600D7ECCF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C490AAA216DB880600D7ECCF /* Foundation.framework */; };
 		C490AAA516DB880600D7ECCF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C490AAA416DB880600D7ECCF /* CoreGraphics.framework */; };
@@ -28,7 +29,8 @@
 		C41AED3F16DB9E0F00C34581 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C456588516E600CD00DDD353 /* SLLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLLocalization.h; sourceTree = "<group>"; };
 		C456588716E600CD00DDD353 /* pluralfom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pluralfom.c; sourceTree = "<group>"; };
-		C456588816E600CD00DDD353 /* SLResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLResource.m; sourceTree = "<group>"; };
+		C464DEB616E775A7008B78D2 /* NSBundle+Smartling_i18n.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Smartling_i18n.m"; sourceTree = "<group>"; };
+		C464DEBA16E7AB86008B78D2 /* floatvalue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = floatvalue.m; sourceTree = "<group>"; };
 		C490AA9D16DB880600D7ECCF /* PluralsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PluralsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C490AAA016DB880600D7ECCF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C490AAA216DB880600D7ECCF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -76,7 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				C456588716E600CD00DDD353 /* pluralfom.c */,
-				C456588816E600CD00DDD353 /* SLResource.m */,
+				C464DEBA16E7AB86008B78D2 /* floatvalue.m */,
+				C464DEB616E775A7008B78D2 /* NSBundle+Smartling_i18n.m */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -210,7 +213,8 @@
 				C490AABF16DB882D00D7ECCF /* MainViewController.m in Sources */,
 				C490AAC216DB89FB00D7ECCF /* PluralsViewController.m in Sources */,
 				C456588916E600CD00DDD353 /* pluralfom.c in Sources */,
-				C456588A16E600CD00DDD353 /* SLResource.m in Sources */,
+				C464DEB716E775A7008B78D2 /* NSBundle+Smartling_i18n.m in Sources */,
+				C464DEBB16E7AB86008B78D2 /* floatvalue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
