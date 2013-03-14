@@ -1,0 +1,111 @@
+#!/usr/bin/ruby
+require 'rubygems'
+require 'treetop'
+
+grammar PluralRules
+  rule condition
+    h:and_condition t:(ws 'or' ws a:and_condition)* {
+      def value
+        b = t.elements.map{|x| x.a.value}
+        return [h.value, *b].map{|x| '(' + x + ')'}.join(' || ') if b.size > 0
+        h.value
+      end
+    }
+  end
+  rule and_condition
+    h:relation t:(ws 'and' ws a:relation)* {
+      def value
+        b = t.elements.map{|x| x.a.value}
+        return [h.value, *b].map{|x| '(' + x + ')'}.join(' && ') if b.size > 0
+        h.value
+      end
+    }
+  end
+  rule relation
+    is_relation / in_relation / within_relation / 'n' {
+      def value
+        text_value if terminal?
+        elements[0].value if nonterminal?
+      end
+    }
+  end
+  rule is_relation
+    expr ws 'is' t:(ws 'not')? ws number {
+      def value
+        e = expr.value
+        e = '(' + e + ')' unless e == 'n'
+        e + (t.empty? ? ' == ' : ' != ') + number.value
+      end
+    }
+  end
+  rule in_relation # TODO: this should be integer match only
+    expr t:(ws 'not')? ws 'in' ws r:range_list {
+      def value
+        e = expr.value
+        e = '(' + e + ')' unless e == 'n'
+        r.value.map{|v|
+          s = if t.empty?
+            v.is_a?(Array) ? (e + ' >= ' + v[0] + ' && ' + e + ' <= ' + v[1]) : (e + ' == ' + v)
+          else
+            v.is_a?(Array) ? (e + ' < ' + v[0] + ' || ' + e + ' > ' + v[1]) : (e + ' != ' + v)
+          end
+          '(' + s + ')'
+        }.join(t.empty? ? ' || ':' && ')
+      end
+    }
+  end
+  rule within_relation
+    expr t:(ws 'not')? ws 'within' ws r:range_list {
+      def value
+        e = expr.value
+        e = '(' + e + ')' unless e == 'n'
+        r.value.map{|v|
+          s = if t.empty?
+            v.is_a?(Array) ? (e + ' >= ' + v[0] + ' && ' + e + ' <= ' + v[1]) : (e + ' == ' + v)
+          else
+            v.is_a?(Array) ? (e + ' < ' + v[0] + ' || ' + e + ' > ' + v[1]) : (e + ' != ' + v)
+          end
+          '(' + s + ')'
+        }.join(t.empty? ? ' || ':' && ')
+      end
+    }
+  end
+  rule expr
+    'n' m:(ws 'mod' ws v:number)? {
+      def value
+        return 'n % ' + m.v.value if !m.empty?
+        'n'
+      end
+    }
+  end
+  rule range_list
+    h:(range / number) t:(ws? ',' ws? r:range_list)* {
+      def value
+        b = t.elements.map{|x| x.r.value}.flatten(1)
+        [h.value, *b]
+      end
+    }
+  end
+  rule number
+    [0-9]+ {
+      def value
+        text_value
+      end  
+    }
+  end
+  rule range
+    a:number '..' b:number {
+      def value
+        return [a.value, b.value]
+      end
+    }
+  end
+  rule ws
+    [\s]+ {
+      def value
+        ''
+      end
+    }
+  end
+end
+
