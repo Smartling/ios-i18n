@@ -7,7 +7,7 @@
 //
 
 #import "PluralsViewController.h"
-#import "SLLocalization.h"
+#import <Smartling.i18n/SLLocalization.h>
 
 
 @interface PluralsViewController () <UIPickerViewDataSource, UIPickerViewDelegate>

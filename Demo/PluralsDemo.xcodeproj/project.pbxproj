@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C41AED3E16DB9B1700C34581 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C41AED3C16DB9B1700C34581 /* Localizable.strings */; };
-		C456588916E600CD00DDD353 /* pluralfom.c in Sources */ = {isa = PBXBuildFile; fileRef = C456588716E600CD00DDD353 /* pluralfom.c */; };
-		C464DEB716E775A7008B78D2 /* NSBundle+Smartling_i18n.m in Sources */ = {isa = PBXBuildFile; fileRef = C464DEB616E775A7008B78D2 /* NSBundle+Smartling_i18n.m */; };
-		C464DEBB16E7AB86008B78D2 /* floatvalue.m in Sources */ = {isa = PBXBuildFile; fileRef = C464DEBA16E7AB86008B78D2 /* floatvalue.m */; };
 		C490AAA116DB880600D7ECCF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C490AAA016DB880600D7ECCF /* UIKit.framework */; };
 		C490AAA316DB880600D7ECCF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C490AAA216DB880600D7ECCF /* Foundation.framework */; };
 		C490AAA516DB880600D7ECCF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C490AAA416DB880600D7ECCF /* CoreGraphics.framework */; };
@@ -22,15 +19,12 @@
 		C490AAB716DB880600D7ECCF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C490AAB616DB880600D7ECCF /* Default-568h@2x.png */; };
 		C490AABF16DB882D00D7ECCF /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C490AABE16DB882D00D7ECCF /* MainViewController.m */; };
 		C490AAC216DB89FB00D7ECCF /* PluralsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C490AAC116DB89FB00D7ECCF /* PluralsViewController.m */; };
+		C4FD624716F3427D00DEF01D /* Smartling.i18n.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4FD624616F3427D00DEF01D /* Smartling.i18n.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C41AED3D16DB9B1700C34581 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C41AED3F16DB9E0F00C34581 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		C456588516E600CD00DDD353 /* SLLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLLocalization.h; sourceTree = "<group>"; };
-		C456588716E600CD00DDD353 /* pluralfom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pluralfom.c; sourceTree = "<group>"; };
-		C464DEB616E775A7008B78D2 /* NSBundle+Smartling_i18n.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Smartling_i18n.m"; sourceTree = "<group>"; };
-		C464DEBA16E7AB86008B78D2 /* floatvalue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = floatvalue.m; sourceTree = "<group>"; };
 		C490AA9D16DB880600D7ECCF /* PluralsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PluralsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C490AAA016DB880600D7ECCF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C490AAA216DB880600D7ECCF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -48,6 +42,7 @@
 		C490AABE16DB882D00D7ECCF /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		C490AAC016DB89FB00D7ECCF /* PluralsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluralsViewController.h; sourceTree = "<group>"; };
 		C490AAC116DB89FB00D7ECCF /* PluralsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PluralsViewController.m; sourceTree = "<group>"; };
+		C4FD624616F3427D00DEF01D /* Smartling.i18n.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Smartling.i18n.framework; path = ../Frameworks/Smartling.i18n.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,37 +53,17 @@
 				C490AAA116DB880600D7ECCF /* UIKit.framework in Frameworks */,
 				C490AAA316DB880600D7ECCF /* Foundation.framework in Frameworks */,
 				C490AAA516DB880600D7ECCF /* CoreGraphics.framework in Frameworks */,
+				C4FD624716F3427D00DEF01D /* Smartling.i18n.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C456588416E600CD00DDD353 /* Smartling.i18n */ = {
-			isa = PBXGroup;
-			children = (
-				C456588516E600CD00DDD353 /* SLLocalization.h */,
-				C456588616E600CD00DDD353 /* src */,
-			);
-			name = Smartling.i18n;
-			path = ../Smartling.i18n;
-			sourceTree = "<group>";
-		};
-		C456588616E600CD00DDD353 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				C456588716E600CD00DDD353 /* pluralfom.c */,
-				C464DEBA16E7AB86008B78D2 /* floatvalue.m */,
-				C464DEB616E775A7008B78D2 /* NSBundle+Smartling_i18n.m */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
 		C490AA9416DB880600D7ECCF = {
 			isa = PBXGroup;
 			children = (
 				C490AAA616DB880600D7ECCF /* PluralsDemo */,
-				C456588416E600CD00DDD353 /* Smartling.i18n */,
 				C490AA9F16DB880600D7ECCF /* Frameworks */,
 				C490AA9E16DB880600D7ECCF /* Products */,
 			);
@@ -108,6 +83,7 @@
 				C490AAA016DB880600D7ECCF /* UIKit.framework */,
 				C490AAA216DB880600D7ECCF /* Foundation.framework */,
 				C490AAA416DB880600D7ECCF /* CoreGraphics.framework */,
+				C4FD624616F3427D00DEF01D /* Smartling.i18n.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -212,9 +188,6 @@
 				C490AAB116DB880600D7ECCF /* AppDelegate.m in Sources */,
 				C490AABF16DB882D00D7ECCF /* MainViewController.m in Sources */,
 				C490AAC216DB89FB00D7ECCF /* PluralsViewController.m in Sources */,
-				C456588916E600CD00DDD353 /* pluralfom.c in Sources */,
-				C464DEB716E775A7008B78D2 /* NSBundle+Smartling_i18n.m in Sources */,
-				C464DEBB16E7AB86008B78D2 /* floatvalue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +241,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = ../Smartling.i18n;
 			};
 			name = Debug;
 		};
@@ -292,7 +264,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = ../Smartling.i18n;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -300,9 +271,15 @@
 		C490AABB16DB880600D7ECCF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Frameworks\"",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PluralsDemo/PluralsDemo-Prefix.pch";
 				INFOPLIST_FILE = "PluralsDemo/PluralsDemo-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -311,9 +288,15 @@
 		C490AABC16DB880600D7ECCF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Frameworks\"",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PluralsDemo/PluralsDemo-Prefix.pch";
 				INFOPLIST_FILE = "PluralsDemo/PluralsDemo-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

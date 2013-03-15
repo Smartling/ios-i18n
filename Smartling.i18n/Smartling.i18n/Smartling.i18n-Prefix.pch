@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Smartling.i18n' target in the 'Smartling.i18n' project
+//
+
+#ifdef __OBJC__
+	#import <Foundation/Foundation.h>
+#endif

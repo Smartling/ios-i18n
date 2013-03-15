@@ -1,0 +1,366 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		C4F6A0CC16F319480058DFDA /* Framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = C4F6A0CD16F319480058DFDA /* Build configuration list for PBXAggregateTarget "Framework" */;
+			buildPhases = (
+				C4F6A0D216F319900058DFDA /* Build Framework */,
+				C4147C0316F31F0600E653D5 /* Copy to ../Frameworks */,
+			);
+			dependencies = (
+				C4F6A0D116F319750058DFDA /* PBXTargetDependency */,
+			);
+			name = Framework;
+			productName = Framework;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		C4F6A0B416F3100B0058DFDA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4F6A0B316F3100B0058DFDA /* Foundation.framework */; };
+		C4F6A0C316F313080058DFDA /* SLLocalization.h in Headers */ = {isa = PBXBuildFile; fileRef = C4F6A0B816F3100B0058DFDA /* SLLocalization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C4F6A0C916F318910058DFDA /* floatvalue.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F6A0C616F318910058DFDA /* floatvalue.m */; };
+		C4F6A0CA16F318910058DFDA /* NSBundle+Smartling_i18n.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F6A0C716F318910058DFDA /* NSBundle+Smartling_i18n.m */; };
+		C4F6A0CB16F318910058DFDA /* pluralfom.c in Sources */ = {isa = PBXBuildFile; fileRef = C4F6A0C816F318910058DFDA /* pluralfom.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C4F6A0D016F319750058DFDA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C4F6A0A816F3100B0058DFDA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C4F6A0AF16F3100B0058DFDA;
+			remoteInfo = Smartling.i18n;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C4F6A0B016F3100B0058DFDA /* libSmartling.i18n.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSmartling.i18n.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4F6A0B316F3100B0058DFDA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C4F6A0B716F3100B0058DFDA /* Smartling.i18n-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smartling.i18n-Prefix.pch"; sourceTree = "<group>"; };
+		C4F6A0B816F3100B0058DFDA /* SLLocalization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLLocalization.h; sourceTree = "<group>"; };
+		C4F6A0C616F318910058DFDA /* floatvalue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = floatvalue.m; sourceTree = "<group>"; };
+		C4F6A0C716F318910058DFDA /* NSBundle+Smartling_i18n.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Smartling_i18n.m"; sourceTree = "<group>"; };
+		C4F6A0C816F318910058DFDA /* pluralfom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pluralfom.c; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C4F6A0AD16F3100B0058DFDA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4F6A0B416F3100B0058DFDA /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C4F6A0A716F3100B0058DFDA = {
+			isa = PBXGroup;
+			children = (
+				C4F6A0B516F3100B0058DFDA /* Smartling.i18n */,
+				C4F6A0B216F3100B0058DFDA /* Frameworks */,
+				C4F6A0B116F3100B0058DFDA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C4F6A0B116F3100B0058DFDA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C4F6A0B016F3100B0058DFDA /* libSmartling.i18n.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C4F6A0B216F3100B0058DFDA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C4F6A0B316F3100B0058DFDA /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C4F6A0B516F3100B0058DFDA /* Smartling.i18n */ = {
+			isa = PBXGroup;
+			children = (
+				C4F6A0B816F3100B0058DFDA /* SLLocalization.h */,
+				C4F6A0C616F318910058DFDA /* floatvalue.m */,
+				C4F6A0C716F318910058DFDA /* NSBundle+Smartling_i18n.m */,
+				C4F6A0C816F318910058DFDA /* pluralfom.c */,
+				C4F6A0B616F3100B0058DFDA /* Supporting Files */,
+			);
+			path = Smartling.i18n;
+			sourceTree = "<group>";
+		};
+		C4F6A0B616F3100B0058DFDA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C4F6A0B716F3100B0058DFDA /* Smartling.i18n-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		C4F6A0C216F312F70058DFDA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4F6A0C316F313080058DFDA /* SLLocalization.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		C4F6A0AF16F3100B0058DFDA /* Smartling.i18n */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C4F6A0BE16F3100B0058DFDA /* Build configuration list for PBXNativeTarget "Smartling.i18n" */;
+			buildPhases = (
+				C4F6A0AC16F3100B0058DFDA /* Sources */,
+				C4F6A0AD16F3100B0058DFDA /* Frameworks */,
+				C4F6A0C216F312F70058DFDA /* Headers */,
+				C4F6A0C516F317C90058DFDA /* Prepare Framework */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Smartling.i18n;
+			productName = Smartling.i18n;
+			productReference = C4F6A0B016F3100B0058DFDA /* libSmartling.i18n.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C4F6A0A816F3100B0058DFDA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = Smartling;
+			};
+			buildConfigurationList = C4F6A0AB16F3100B0058DFDA /* Build configuration list for PBXProject "Smartling.i18n" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C4F6A0A716F3100B0058DFDA;
+			productRefGroup = C4F6A0B116F3100B0058DFDA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C4F6A0AF16F3100B0058DFDA /* Smartling.i18n */,
+				C4F6A0CC16F319480058DFDA /* Framework */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C4147C0316F31F0600E653D5 /* Copy to ../Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy to ../Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\nSL_FRAMEWORKS_DIR=\"${PROJECT_DIR}/../Frameworks\"\n\nrm -rf \"${SL_FRAMEWORKS_DIR}/${SF_WRAPPER_NAME}\"\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}\" \"${SL_FRAMEWORKS_DIR}/\"\n";
+		};
+		C4F6A0C516F317C90058DFDA /* Prepare Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Prepare Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n\n# Link the \"Current\" version to \"A\"\n/bin/ln -sfh A \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n";
+		};
+		C4F6A0D216F319900058DFDA /* Build Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nlipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C4F6A0AC16F3100B0058DFDA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4F6A0C916F318910058DFDA /* floatvalue.m in Sources */,
+				C4F6A0CA16F318910058DFDA /* NSBundle+Smartling_i18n.m in Sources */,
+				C4F6A0CB16F318910058DFDA /* pluralfom.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C4F6A0D116F319750058DFDA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C4F6A0AF16F3100B0058DFDA /* Smartling.i18n */;
+			targetProxy = C4F6A0D016F319750058DFDA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C4F6A0BC16F3100B0058DFDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
+				SDKROOT = iphoneos;
+				STRIP_STYLE = "non-global";
+			};
+			name = Debug;
+		};
+		C4F6A0BD16F3100B0058DFDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
+				SDKROOT = iphoneos;
+				STRIP_STYLE = "non-global";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C4F6A0BF16F3100B0058DFDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Smartling_i18n.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Smartling.i18n/Smartling.i18n-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C4F6A0C016F3100B0058DFDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Smartling_i18n.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Smartling.i18n/Smartling.i18n-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		C4F6A0CE16F319480058DFDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C4F6A0CF16F319480058DFDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C4F6A0AB16F3100B0058DFDA /* Build configuration list for PBXProject "Smartling.i18n" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4F6A0BC16F3100B0058DFDA /* Debug */,
+				C4F6A0BD16F3100B0058DFDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C4F6A0BE16F3100B0058DFDA /* Build configuration list for PBXNativeTarget "Smartling.i18n" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4F6A0BF16F3100B0058DFDA /* Debug */,
+				C4F6A0C016F3100B0058DFDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C4F6A0CD16F319480058DFDA /* Build configuration list for PBXAggregateTarget "Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4F6A0CE16F319480058DFDA /* Debug */,
+				C4F6A0CF16F319480058DFDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C4F6A0A816F3100B0058DFDA /* Project object */;
+}

@@ -2,7 +2,7 @@
 //  SLLocalization.h
 //  Smartling.i18n
 //
-//  Created by Pavel Ivashkov on 2013-02-25.
+//  Created by Pavel Ivashkov on 2013-03-15.
 //  Copyright (c) 2013 Smartling. All rights reserved.
 //
 

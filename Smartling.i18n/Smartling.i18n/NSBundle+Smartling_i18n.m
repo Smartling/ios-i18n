@@ -33,3 +33,9 @@
 }
 
 @end
+
+// Technical Q&A QA1490
+// Building Objective-C static libraries with categories
+// http://developer.apple.com/library/mac/#qa/qa1490/_index.html
+#define LINK_CATEGORIES(UNIQUE_NAME) @interface FORCELOAD_##UNIQUE_NAME : NSObject @end @implementation FORCELOAD_##UNIQUE_NAME @end
+LINK_CATEGORIES(NSBundle_Smartling_i18n)
