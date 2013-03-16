@@ -179,7 +179,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\nSL_FRAMEWORKS_DIR=\"${PROJECT_DIR}/../Frameworks\"\n\nrm -rf \"${SL_FRAMEWORKS_DIR}/${SF_WRAPPER_NAME}\"\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}\" \"${SL_FRAMEWORKS_DIR}/\"\n";
+			shellScript = "set -e\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\nSL_FRAMEWORKS_DIR=\"${PROJECT_DIR}/../Frameworks\"\nSL_PACKAGE=\"${SF_WRAPPER_NAME}.tar.gz\"\n\nrm -rf \"${SL_FRAMEWORKS_DIR}/${SF_WRAPPER_NAME}\"\nrm -f \"${SL_FRAMEWORKS_DIR}/${SL_PACKAGE}\"\n\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}\" \"${SL_FRAMEWORKS_DIR}/\"\ntar -czf \"${SL_FRAMEWORKS_DIR}/${SL_PACKAGE}\" \"${SL_FRAMEWORKS_DIR}/${SF_WRAPPER_NAME}\"\n";
 		};
 		C4F6A0C516F317C90058DFDA /* Prepare Framework */ = {
 			isa = PBXShellScriptBuildPhase;

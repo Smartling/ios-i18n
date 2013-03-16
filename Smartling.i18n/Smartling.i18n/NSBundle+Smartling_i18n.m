@@ -8,9 +8,6 @@
 
 #import "SLLocalization.h"
 
-// This is hard-coded in this version of the lib, but in the future we could handle multiple plural parameters.
-#define SL_PLURAL_PARAMETER 1
-
 
 @implementation NSBundle(Smartling_i18n)
 
@@ -26,7 +23,7 @@
 	}
 	
 	const char* form = pluralformf([lang cStringUsingEncoding:NSASCIIStringEncoding], pluralValue);
-	NSString *keyVariant = [NSString stringWithFormat:@"%@##{%d:%s}", key, SL_PLURAL_PARAMETER, form];
+	NSString *keyVariant = [NSString stringWithFormat:@"%@##{%s}", key, form];
 	
 	NSString *so = [self localizedStringForKey:keyVariant value:defaultValue table:tableName];
 	return so;
