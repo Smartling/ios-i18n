@@ -65,6 +65,7 @@ Sample resource files for key string `%d songs found`:
     /* Number of songs from search results */
     "%d songs found##{one}" = "Найдена одна песня";
     "%d songs found##{few}" = "Найдено %d песни";
+    "%d songs found##{many}" = "Найдено %d песен";
     "%d songs found##{other}" = "Найдено %d песен";
 
   [fw]: Frameworks/Smartling.i18n.framework.tar.gz
