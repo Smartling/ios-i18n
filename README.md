@@ -49,6 +49,8 @@ For more details on this mechanism, see [Support for Internationalization] [appl
 The extended syntax for key is: `KEY##{rule}`.
 Where `KEY` is the original key string, and `rule` is one of plural rules: `zero`, `one`, `two`, `few`, `many`, `other`.
 
+The `rule` portion of the full key conforms to the [CLDR spec][CLDR] on plural forms. The iOS-18n library will load a particular translation following the same rules as defined under CLDR.
+
 Sample resource files for key string `%d songs found`:
 
 ##### en.lproj/Localizable.strings
@@ -69,4 +71,5 @@ Sample resource files for key string `%d songs found`:
   [NSLocalizedString]: https://developer.apple.com/library/ios/#documentation/cocoa/reference/foundation/miscellaneous/foundation_functions/reference/reference.html
   [applei18n]: https://developer.apple.com/library/mac/#documentation/MacOSX/Conceptual/BPInternational/Articles/InternatSupport.html
   [stringsff]: https://developer.apple.com/library/ios/#documentation/Cocoa/Conceptual/LoadingResources/Strings/Strings.html
+  [CLDR]: http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html
   
