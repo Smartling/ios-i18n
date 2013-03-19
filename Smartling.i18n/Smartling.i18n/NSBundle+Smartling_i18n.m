@@ -13,20 +13,45 @@
 
 - (NSString *)pluralizedStringWithKey:(NSString *)key defaultValue:(NSString *)defaultValue table:(NSString *)tableName pluralValue:(float)pluralValue
 {
-	NSString *lang = nil;
-	NSArray *locs = self.preferredLocalizations;
-	if (locs.count) {
-		lang = locs[0];
-	}
-	else {
-		lang = self.developmentLocalization;
+	NSMutableArray *locales = [NSMutableArray arrayWithArray:self.preferredLocalizations];
+	if (self.developmentLocalization && ![[locales lastObject] isEqualToString:self.developmentLocalization]) {
+		[locales addObject:self.developmentLocalization];
 	}
 	
-	const char* form = pluralformf([lang cStringUsingEncoding:NSASCIIStringEncoding], pluralValue);
-	NSString *keyVariant = [NSString stringWithFormat:@"%@##{%s}", key, form];
+	for (NSString *lang in locales) {
+		const char* form = pluralformf([lang cStringUsingEncoding:NSASCIIStringEncoding], pluralValue);
+		NSString *keyVariant = [NSString stringWithFormat:@"%@##{%s}", key, form];
+		
+		if (!tableName) {
+			tableName = [self pathForResource:@"Localizable" ofType:@"strings" inDirectory:nil forLocalization:lang];
+		}
+		if (!tableName) {
+			NSArray *paths = [self pathsForResourcesOfType:@"strings" inDirectory:nil forLocalization:lang];
+			if (paths.count) tableName = paths[0];
+		}
+		
+		NSDictionary *dict = nil;
+		if (tableName) {
+			dict = [NSDictionary dictionaryWithContentsOfFile:tableName];
+		}
+		
+		NSString *ls = dict[keyVariant];
+		if (ls.length) {
+			return ls;
+		}
+
+		BOOL report = [[NSUserDefaults standardUserDefaults] boolForKey:@"NSShowNonLocalizedStrings"];
+		if (report) {
+			NSLog(@"Missing %@ localization for \"%@\"", lang.uppercaseString, keyVariant);
+			return [keyVariant uppercaseString];
+		}
+	}
+		
+	if (defaultValue.length) {
+		return defaultValue;
+	}
 	
-	NSString *so = [self localizedStringForKey:keyVariant value:defaultValue table:tableName];
-	return so;
+	return key;
 }
 
 @end

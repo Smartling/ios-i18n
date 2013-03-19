@@ -4,9 +4,9 @@
 "%.1f apples##{one}" = "%.1f яблоко";
 "%.1f apples##{few}" = "%.1f яблока";
 "%.1f apples##{many}" = "%.1f яблок";
-"%.1f apples##{other}" = "%.1f яблок";
+"%.1f apples##{other}" = "%.1f яблока";
 
 "%@ apples##{one}" = "%@ яблоко";
 "%@ apples##{few}" = "%@ яблока";
 "%@ apples##{many}" = "%@ яблок";
-"%@ apples##{other}" = "%@ яблок";
+"%@ apples##{other}" = "%@ яблока";

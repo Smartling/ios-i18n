@@ -39,10 +39,7 @@ There are four functions to retrieve pluralized string, similar to [NSLocalizedS
 
 #### Fallback
 
-At runtime, SLPluralizedString tries to retrieve localized string according to selected plural form, given number value. If not found, it mimicks NSLocalizedString – and falls back to developer specified language, trying to find that same plural form.
-
-For example, if KEY_few not found in Russian resource table, it will search for KEY_few in English resource table.
-
+At runtime, SLPluralizedString tries to retrieve localized string according to selected plural form, given number value. If not found, it mimicks NSLocalizedString – and falls back to developer specified language.
 For more details on this mechanism, see [Support for Internationalization] [applei18n]
 
 ### Extended .strings format
