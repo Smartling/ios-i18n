@@ -1,5 +1,8 @@
 # Smartling.i18n.framework
-Extended iOS localization with plurals.
+iOS Plurals Localization Library
+
+iOS localization does not support plural functionality out of the box. The ios-i18n library was designed to bridge that gap and provide a means for developers to seamlessly integrate plurals into their localized apps across any number of locales.
+
 
 ## Installation
 1. Download [Smartling.i18n.framework.tar.gz] [fw]
