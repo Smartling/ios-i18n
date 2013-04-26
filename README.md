@@ -80,7 +80,7 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
-  [fw]: Frameworks/Smartling.i18n.framework.tar.gz
+  [fw]: ../../raw/master/Frameworks/Smartling.i18n.framework.tar.gz
   [NSLocalizedString]: https://developer.apple.com/library/ios/#documentation/cocoa/reference/foundation/miscellaneous/foundation_functions/reference/reference.html
   [applei18n]: https://developer.apple.com/library/mac/#documentation/MacOSX/Conceptual/BPInternational/Articles/InternatSupport.html
   [stringsff]: https://developer.apple.com/library/ios/#documentation/Cocoa/Conceptual/LoadingResources/Strings/Strings.html
