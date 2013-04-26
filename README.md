@@ -15,8 +15,8 @@ iOS localization does not support plural functionality out of the box. The ios-i
 ### Plurals
 
     int number = 42;
-    NSString *key = SLPluralizedString(@"%d apples", number, @"Comment");
-    NSString *text = [NSString stringWithFormat:key, number];
+    NSString *format = SLPluralizedString(@"%d apples", number, @"Comment");
+    NSString *text = [NSString stringWithFormat:format, number];
 
 #### SLPluralizedString...
 There are four functions to retrieve pluralized string, similar to [NSLocalizedString]:
