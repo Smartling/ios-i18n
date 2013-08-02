@@ -34,8 +34,11 @@
 		const char* form = pluralformf([lang cStringUsingEncoding:NSASCIIStringEncoding], pluralValue);
 		NSString *keyVariant = [NSString stringWithFormat:@"%@##{%s}", key, form];
 		
-		if (!tableName) {
-			tableName = [self pathForResource:@"Localizable" ofType:@"strings" inDirectory:nil forLocalization:lang];
+		if (tableName.length == 0) {
+			tableName = @"Localizable";
+		}
+		if (tableName) {
+			tableName = [self pathForResource:tableName ofType:@"strings" inDirectory:nil forLocalization:lang];
 		}
 		if (!tableName) {
 			NSArray *paths = [self pathsForResourcesOfType:@"strings" inDirectory:nil forLocalization:lang];

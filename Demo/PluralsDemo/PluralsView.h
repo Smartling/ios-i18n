@@ -12,13 +12,15 @@
 // limitations under the License.
 
 //
-//  PluralsViewController.h
+//  PluralsView.h
 //  PluralsDemo
 //
-//  Created by Pavel Ivashkov on 2013-02-25.
+//  Created by Pavel Ivashkov on 2013-08-02.
 //
 
+@interface PluralsView : UIView
 
-@interface PluralsViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 
 @end

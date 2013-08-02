@@ -18,15 +18,16 @@
 //  Created by Pavel Ivashkov on 2013-02-25.
 //
 
+#import "PluralsView.h"
 #import "PluralsViewController.h"
 #import <Smartling.i18n/SLLocalization.h>
 
 
-@interface PluralsViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface PluralsViewController () <UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property(strong, nonatomic) NSArray *model;
 @property(strong, nonatomic) NSArray *pickerModel;
-@property(strong, nonatomic) UIPickerView *pickerView;
+@property(nonatomic, readonly) PluralsView *pluralsView;
 
 - (NSArray *)modelWithNumber:(float)primitive;
 - (void)updateModelFromPickerView:(UIPickerView *)pickerView;
@@ -49,11 +50,14 @@
 	NSString *string = [NSString stringWithFormat:@"\uF8FF%@", number];
 	NSString *s3 = [NSString stringWithFormat:SLPluralizedString(@"%@ apples", number, nil), string];
 
+	NSString *s4 = [NSString stringWithFormat:SLPluralizedStringFromTable(@"%@ demo strings", @"Demo", number, nil), number];
+
 	NSArray *list = @[
 		@{ @"text":s0, @"detail":@"NSLocalizedString and stringWithFormat" },
 		@{ @"text":s1, @"detail":@"SLPluralizedString with primitive type" },
 		@{ @"text":s2, @"detail":@"SLPluralizedString with number object type" },
 		@{ @"text":s3, @"detail":@"SLPluralizedString with custom formatted string" },
+		@{ @"text":s4, @"detail":@"SLPluralizedStringFromTable \"Demo\"" },
 	];
 	return list;
 }
@@ -61,11 +65,7 @@
 
 - (id)init
 {
-	return [self initWithStyle:UITableViewStyleGrouped];
-}
-- (id)initWithStyle:(UITableViewStyle)style
-{
-	if (!(self = [super initWithStyle:style]))
+	if (!(self = [super init]))
 		return nil;
 	
 	self.title = @"Plurals";
@@ -80,27 +80,20 @@
 	return self;
 }
 
-- (void)viewDidLoad
+- (PluralsView *)pluralsView
 {
-	[super viewDidLoad];
-	
-	const int pickerHeight = 216;
-	
-	CGRect appFrame = self.view.bounds;
-	CGRect rect = CGRectMake(0, CGRectGetHeight(appFrame) - pickerHeight, CGRectGetWidth(appFrame), pickerHeight);
-	UIPickerView *picker = [[UIPickerView alloc] initWithFrame:rect];
-	picker.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-	picker.showsSelectionIndicator = YES;
-	picker.dataSource = self;
-	picker.delegate = self;
-	[self.view addSubview:picker];
-	self.pickerView = picker;
+	return (PluralsView *)self.view;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-	[self updateModelFromPickerView:self.pickerView];
+	[self updateModelFromPickerView:self.pluralsView.pickerView];
+}
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+	[self.pluralsView.tableView flashScrollIndicators];
 }
 
 #pragma mark - UITableViewDataSource
@@ -169,7 +162,7 @@
 	}
 	float num = x / 10.0;
 	self.model = [self modelWithNumber:num];
-	[self.tableView reloadData];
+	[self.pluralsView.tableView reloadData];
 }
 
 @end

@@ -1,0 +1,5 @@
+
+"%@ demo strings##{one}" = "%@ демо строка";
+"%@ demo strings##{few}" = "%@ демо строки";
+"%@ demo strings##{many}" = "%@ демо строк";
+"%@ demo strings##{other}" = "%@ демо строки";

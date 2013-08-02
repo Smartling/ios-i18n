@@ -1,0 +1,3 @@
+
+"%@ demo strings##{one}" = "One demo string";
+"%@ demo strings##{other}" = "%@ demo strings";

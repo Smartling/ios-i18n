@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C41AED3E16DB9B1700C34581 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C41AED3C16DB9B1700C34581 /* Localizable.strings */; };
+		C44830AA17ABE255009ED830 /* Demo.strings in Resources */ = {isa = PBXBuildFile; fileRef = C44830A817ABE255009ED830 /* Demo.strings */; };
+		C44830AD17ABE443009ED830 /* PluralsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C44830AC17ABE443009ED830 /* PluralsView.xib */; };
+		C44830B017ABE543009ED830 /* PluralsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C44830AF17ABE543009ED830 /* PluralsView.m */; };
 		C490AAA116DB880600D7ECCF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C490AAA016DB880600D7ECCF /* UIKit.framework */; };
 		C490AAA316DB880600D7ECCF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C490AAA216DB880600D7ECCF /* Foundation.framework */; };
 		C490AAA516DB880600D7ECCF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C490AAA416DB880600D7ECCF /* CoreGraphics.framework */; };
@@ -25,6 +28,11 @@
 /* Begin PBXFileReference section */
 		C41AED3D16DB9B1700C34581 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C41AED3F16DB9E0F00C34581 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C44830A917ABE255009ED830 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Demo.strings; sourceTree = "<group>"; };
+		C44830AB17ABE25B009ED830 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Demo.strings; sourceTree = "<group>"; };
+		C44830AC17ABE443009ED830 /* PluralsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PluralsView.xib; sourceTree = "<group>"; };
+		C44830AE17ABE543009ED830 /* PluralsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluralsView.h; sourceTree = "<group>"; };
+		C44830AF17ABE543009ED830 /* PluralsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PluralsView.m; sourceTree = "<group>"; };
 		C490AA9D16DB880600D7ECCF /* PluralsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PluralsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C490AAA016DB880600D7ECCF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C490AAA216DB880600D7ECCF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -95,6 +103,9 @@
 				C490AAB016DB880600D7ECCF /* AppDelegate.m */,
 				C490AABD16DB882D00D7ECCF /* MainViewController.h */,
 				C490AABE16DB882D00D7ECCF /* MainViewController.m */,
+				C44830AC17ABE443009ED830 /* PluralsView.xib */,
+				C44830AE17ABE543009ED830 /* PluralsView.h */,
+				C44830AF17ABE543009ED830 /* PluralsView.m */,
 				C490AAC016DB89FB00D7ECCF /* PluralsViewController.h */,
 				C490AAC116DB89FB00D7ECCF /* PluralsViewController.m */,
 				C490AAA716DB880600D7ECCF /* Supporting Files */,
@@ -106,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				C41AED3C16DB9B1700C34581 /* Localizable.strings */,
+				C44830A817ABE255009ED830 /* Demo.strings */,
 				C490AAA816DB880600D7ECCF /* PluralsDemo-Info.plist */,
 				C490AAA916DB880600D7ECCF /* InfoPlist.strings */,
 				C490AAAC16DB880600D7ECCF /* main.m */,
@@ -174,6 +186,8 @@
 				C490AAB516DB880600D7ECCF /* Default@2x.png in Resources */,
 				C490AAB716DB880600D7ECCF /* Default-568h@2x.png in Resources */,
 				C41AED3E16DB9B1700C34581 /* Localizable.strings in Resources */,
+				C44830AA17ABE255009ED830 /* Demo.strings in Resources */,
+				C44830AD17ABE443009ED830 /* PluralsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +202,7 @@
 				C490AAB116DB880600D7ECCF /* AppDelegate.m in Sources */,
 				C490AABF16DB882D00D7ECCF /* MainViewController.m in Sources */,
 				C490AAC216DB89FB00D7ECCF /* PluralsViewController.m in Sources */,
+				C44830B017ABE543009ED830 /* PluralsView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +216,15 @@
 				C41AED3F16DB9E0F00C34581 /* ru */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		C44830A817ABE255009ED830 /* Demo.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C44830A917ABE255009ED830 /* en */,
+				C44830AB17ABE25B009ED830 /* ru */,
+			);
+			name = Demo.strings;
 			sourceTree = "<group>";
 		};
 		C490AAA916DB880600D7ECCF /* InfoPlist.strings */ = {

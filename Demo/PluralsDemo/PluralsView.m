@@ -12,13 +12,15 @@
 // limitations under the License.
 
 //
-//  PluralsViewController.h
+//  PluralsView.m
 //  PluralsDemo
 //
-//  Created by Pavel Ivashkov on 2013-02-25.
+//  Created by Pavel Ivashkov on 2013-08-02.
 //
 
+#import "PluralsView.h"
 
-@interface PluralsViewController : UIViewController
+
+@implementation PluralsView
 
 @end
