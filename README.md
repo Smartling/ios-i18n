@@ -65,7 +65,7 @@ Sample resource files for key string `%d songs found`:
 ##### ru.lproj/Localizable.strings
 
     /* Number of songs from search results */
-    "%d songs found##{one}" = "Найдена одна песня";
+    "%d songs found##{one}" = "Найдена %d песня";
     "%d songs found##{few}" = "Найдено %d песни";
     "%d songs found##{many}" = "Найдено %d песен";
     "%d songs found##{other}" = "Найдено %d песен";
