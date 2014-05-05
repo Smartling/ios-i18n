@@ -18,6 +18,7 @@
 //  Created by Pavel Ivashkov on 2013-03-06.
 //
 
+#import <objc/runtime.h>
 #import "SLLocalization.h"
 
 
@@ -25,48 +26,104 @@
 
 - (NSString *)pluralizedStringWithKey:(NSString *)key defaultValue:(NSString *)defaultValue table:(NSString *)tableName pluralValue:(float)pluralValue
 {
-	NSMutableArray *locales = [NSMutableArray arrayWithArray:self.preferredLocalizations];
-	if (self.developmentLocalization && ![[locales lastObject] isEqualToString:self.developmentLocalization]) {
-		[locales addObject:self.developmentLocalization];
+	if (tableName.length == 0) {
+		tableName = @"Localizable";
 	}
 	
-	for (NSString *lang in locales) {
+	for (NSString *lang in self.cachedLocales) {
+		
+		// keyVariant: key##{form}
+		
 		const char* form = pluralformf([lang cStringUsingEncoding:NSASCIIStringEncoding], pluralValue);
-		NSString *keyVariant = [NSString stringWithFormat:@"%@##{%s}", key, form];
+		char suffix[16] = "##{";
+		strcat(suffix, form);
+		strcat(suffix, "}");
+		NSString *keyVariant = [key stringByAppendingString:[NSString stringWithUTF8String:suffix]];
 		
-		if (tableName.length == 0) {
-			tableName = @"Localizable";
-		}
-		if (tableName) {
-			tableName = [self pathForResource:tableName ofType:@"strings" inDirectory:nil forLocalization:lang];
-		}
-		if (!tableName) {
-			NSArray *paths = [self pathsForResourcesOfType:@"strings" inDirectory:nil forLocalization:lang];
-			if (paths.count) tableName = paths[0];
-		}
-		
-		NSDictionary *dict = nil;
-		if (tableName) {
-			dict = [NSDictionary dictionaryWithContentsOfFile:tableName];
-		}
+		NSDictionary *dict = [self stringsWithContentsOfFile:tableName forLocalization:lang];
 		
 		NSString *ls = dict[keyVariant];
 		if (ls.length) {
 			return ls;
 		}
-
-		BOOL report = [[NSUserDefaults standardUserDefaults] boolForKey:@"NSShowNonLocalizedStrings"];
-		if (report) {
+		
+		if (self.shouldReportNonLocalizedStrings) {
 			NSLog(@"Missing %@ localization for \"%@\"", lang.uppercaseString, keyVariant);
 			return [keyVariant uppercaseString];
 		}
 	}
-		
+	
 	if (defaultValue.length) {
 		return defaultValue;
 	}
 	
 	return key;
+}
+
+- (NSDictionary *)stringsWithContentsOfFile:(NSString *)path forLocalization:(NSString *)lang
+{
+	NSMutableString *key = [NSMutableString stringWithCapacity:path.length + lang.length + 1];
+	[key appendString:path];
+	[key appendString:@"-"];
+	[key appendString:lang];
+	
+	id dict = self.cachedTables[key];
+	if (dict) {
+		if (dict == NSNull.null) return nil;
+		return dict;
+	}
+	
+	NSString *tableName = path;
+	if (tableName) {
+		tableName = [self pathForResource:tableName ofType:@"strings" inDirectory:nil forLocalization:lang];
+	}
+	if (!tableName) {
+		NSArray *paths = [self pathsForResourcesOfType:@"strings" inDirectory:nil forLocalization:lang];
+		if (paths.count) tableName = paths[0];
+	}
+	
+	if (tableName) {
+		dict = [NSDictionary dictionaryWithContentsOfFile:tableName];
+	}
+	
+	self.cachedTables[key] = dict ? : NSNull.null;
+	
+	return dict;
+}
+
+- (NSMutableDictionary *)cachedTables
+{
+	static const NSString *kSLBundleCachedTables = @"kSLBundleCachedTables";
+	NSMutableDictionary *d = objc_getAssociatedObject(self, (__bridge const void *)(kSLBundleCachedTables));
+	if (!d) {
+		d = [NSMutableDictionary dictionary];
+		objc_setAssociatedObject(self, (__bridge const void *)(kSLBundleCachedTables), d, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+	}
+	return d;
+}
+
+- (NSArray *)cachedLocales
+{
+	static const NSString *kSLBundleCachedLocales = @"kSLBundleCachedLocales";
+	NSMutableArray *locales = objc_getAssociatedObject(self, (__bridge const void *)(kSLBundleCachedLocales));
+	if (!locales) {
+		locales = [NSMutableArray arrayWithArray:self.preferredLocalizations];
+		if (self.developmentLocalization && ![[locales lastObject] isEqualToString:self.developmentLocalization]) {
+			[locales addObject:self.developmentLocalization];
+		}
+		objc_setAssociatedObject(self, (__bridge const void *)(kSLBundleCachedLocales), locales, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+	}
+	return locales;
+}
+
+- (BOOL)shouldReportNonLocalizedStrings
+{
+	static BOOL report = NO;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		report = [[NSUserDefaults standardUserDefaults] boolForKey:@"NSShowNonLocalizedStrings"];
+	});
+	return report;
 }
 
 @end
