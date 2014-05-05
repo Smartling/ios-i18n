@@ -1,7 +1,11 @@
 # Smartling.i18n.framework
 iOS Plurals Localization Library
 
-iOS localization does not support plural functionality out of the box. The ios-i18n library was designed to bridge that gap and provide a means for developers to seamlessly integrate plurals into their localized apps across any number of locales.
+> As of iOS 7 and Mac OS X 10.9 Mavericks, Foundation has the ability to specify localized strings according to pluralization and grammar rules. You can find more information about it in the [Localized Property List File](https://developer.apple.com/library/mac/releasenotes/Foundation/RN-Foundation/#//apple_ref/doc/uid/TP30000742-CH2-SW56) section of the Foundation release notes.
+
+> Smartling.i18n.framework is not compatible with Apple's implementation, and does not handle ".stringsdict" resource files.
+
+iOS (pre-iOS 7) localization does not support plural functionality out of the box. The ios-i18n library was designed to bridge that gap and provide a means for developers to seamlessly integrate plurals into their localized apps across any number of locales.
 
 
 ## Installation
@@ -47,7 +51,7 @@ For more details on this mechanism, see [Support for Internationalization] [appl
 
 ### Extended .strings format
 
-[Standard .strings file format][stringsff] is extended with pluralized variants. 
+[Standard .strings file format][stringsff] is extended with pluralized variants.
 
 The extended syntax for key is: `KEY##{rule}`.
 Where `KEY` is the original key string, and `rule` is one of plural rules: `zero`, `one`, `two`, `few`, `many`, `other`.
@@ -85,4 +89,3 @@ Unless required by applicable law or agreed to in writing, software distributed 
   [applei18n]: https://developer.apple.com/library/mac/#documentation/MacOSX/Conceptual/BPInternational/Articles/InternatSupport.html
   [stringsff]: https://developer.apple.com/library/ios/#documentation/Cocoa/Conceptual/LoadingResources/Strings/Strings.html
   [CLDR]: http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html
-  
