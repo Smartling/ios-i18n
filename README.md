@@ -3,9 +3,9 @@ iOS Plurals Localization Library
 
 > As of iOS 7 and Mac OS X 10.9 Mavericks, Foundation has the ability to specify localized strings according to pluralization and grammar rules. You can find more information about it in the [Localized Property List File](https://developer.apple.com/library/mac/releasenotes/Foundation/RN-Foundation/#//apple_ref/doc/uid/TP30000742-CH2-SW56) section of the Foundation release notes.
 
-> Smartling.i18n.framework is not compatible with Apple's implementation, and does not handle ".stringsdict" resource files.
+> **ios-i18n** is not compatible with Apple's implementation, and does not handle new ".stringsdict" resource files.
 
-iOS (pre-iOS 7) localization does not support plural functionality out of the box. The ios-i18n library was designed to bridge that gap and provide a means for developers to seamlessly integrate plurals into their localized apps across any number of locales.
+iOS (pre-iOS 7) localization does not support plural functionality out of the box. The **ios-i18n** library was designed to bridge that gap and provide a means for developers to seamlessly integrate plurals into their localized apps across any number of locales.
 
 
 ## Installation
@@ -46,17 +46,18 @@ There are four functions to retrieve pluralized string, similar to [NSLocalizedS
 
 #### Fallback
 
-At runtime, SLPluralizedString tries to retrieve localized string according to selected plural form, given number value. If not found, it mimicks NSLocalizedString – and falls back to developer specified language.
-For more details on this mechanism, see [Support for Internationalization] [applei18n]
+**ios-i18n** implements resource fallback for each key query. At runtime, SLPluralizedString retrieves string whose localization most closely matches the preferred language of the user.
+
+In contrast, Apple's implementation of NSLocalizedString first selects appropriate localization table, then uses this table for all subsequent queries. For more details on this mechanism, see [Support for Internationalization] [applei18n]
 
 ### Extended .strings format
 
-[Standard .strings file format][stringsff] is extended with pluralized variants.
+**ios-i18n** extends [standard .strings file format][stringsff] with pluralized variants.
 
 The extended syntax for key is: `KEY##{rule}`.
 Where `KEY` is the original key string, and `rule` is one of plural rules: `zero`, `one`, `two`, `few`, `many`, `other`.
 
-The `rule` portion of the full key conforms to the [CLDR spec][CLDR] on plural forms. The iOS-18n library will load a particular translation following the same rules as defined under CLDR.
+The `rule` portion of the full key conforms to the [CLDR spec][CLDR] on plural forms. The **ios-i18n** library will load a particular translation following the same rules as defined under CLDR.
 
 Sample resource files for key string `%d songs found`:
 

@@ -30,9 +30,15 @@
 		tableName = @"Localizable";
 	}
 	
-	for (NSString *lang in self.cachedLocales) {
+	for (NSString *locale in self.cachedLocales) {
 		
 		// keyVariant: key##{form}
+		
+		NSString *lang = locale;
+		NSRange range = [locale rangeOfString:@"-"];
+		if (range.location != NSNotFound) {
+			lang = [locale substringToIndex:range.location];
+		}
 		
 		const char* form = pluralformf([lang cStringUsingEncoding:NSASCIIStringEncoding], pluralValue);
 		char suffix[16] = "##{";
@@ -40,7 +46,7 @@
 		strcat(suffix, "}");
 		NSString *keyVariant = [key stringByAppendingString:[NSString stringWithUTF8String:suffix]];
 		
-		NSDictionary *dict = [self stringsWithContentsOfFile:tableName forLocalization:lang];
+		NSDictionary *dict = [self stringsWithContentsOfFile:tableName forLocalization:locale];
 		
 		NSString *ls = dict[keyVariant];
 		if (ls.length) {
@@ -48,7 +54,7 @@
 		}
 		
 		if (self.shouldReportNonLocalizedStrings) {
-			NSLog(@"Missing %@ localization for \"%@\"", lang.uppercaseString, keyVariant);
+			NSLog(@"Missing %@ localization for \"%@\"", locale.uppercaseString, keyVariant);
 			return [keyVariant uppercaseString];
 		}
 	}
