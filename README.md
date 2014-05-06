@@ -9,6 +9,12 @@ iOS (pre-iOS 7) localization does not support plural functionality out of the bo
 
 
 ## Installation
+### Via CocoaPods
+Update your podfile with
+
+    pod 'Smartling.i18n', '~> 1.0'
+
+### Framework bundle
 1. Download [Smartling.i18n.framework.tar.gz] [fw]
 2. Unpack and drag `Smartling.i18n.framework` to your project's `Frameworks` group.
 3. In the `Build Settings` of your target add **-ObjC** to **Other Linker Flags**.
