@@ -26,36 +26,11 @@
 
 - (NSString *)pluralizedStringWithKey:(NSString *)key defaultValue:(NSString *)defaultValue table:(NSString *)tableName pluralValue:(float)pluralValue
 {
-	if (tableName.length == 0) {
-		tableName = @"Localizable";
-	}
-	
 	for (NSString *locale in self.cachedLocales) {
 		
-		// keyVariant: key##{form}
-		
-		NSString *lang = locale;
-		NSRange range = [locale rangeOfString:@"-"];
-		if (range.location != NSNotFound) {
-			lang = [locale substringToIndex:range.location];
-		}
-		
-		const char* form = pluralformf([lang cStringUsingEncoding:NSASCIIStringEncoding], pluralValue);
-		char suffix[16] = "##{";
-		strcat(suffix, form);
-		strcat(suffix, "}");
-		NSString *keyVariant = [key stringByAppendingString:[NSString stringWithUTF8String:suffix]];
-		
-		NSDictionary *dict = [self stringsWithContentsOfFile:tableName forLocalization:locale];
-		
-		NSString *ls = dict[keyVariant];
+		NSString *ls = [self _pluralizedStringWithKey:key table:tableName pluralValue:pluralValue forLocalization:locale];
 		if (ls.length) {
 			return ls;
-		}
-		
-		if (self.shouldReportNonLocalizedStrings) {
-			NSLog(@"Missing %@ localization for \"%@\"", locale.uppercaseString, keyVariant);
-			return [keyVariant uppercaseString];
 		}
 	}
 	
@@ -64,6 +39,58 @@
 	}
 	
 	return key;
+}
+
+- (NSString *)pluralizedStringWithKey:(NSString *)key
+						 defaultValue:(NSString *)defaultValue
+								table:(NSString *)tableName
+						  pluralValue:(float)pluralValue
+					  forLocalization:(NSString *)locale
+{
+	NSString *ls = [self _pluralizedStringWithKey:key table:tableName pluralValue:pluralValue forLocalization:locale];
+	if (ls.length) {
+		return ls;
+	}
+	
+	if (defaultValue.length) {
+		return defaultValue;
+	}
+	
+	return key;
+}
+
+- (NSString *)_pluralizedStringWithKey:(NSString *)key
+								 table:(NSString *)tableName
+						   pluralValue:(float)pluralValue
+					   forLocalization:(NSString *)locale
+
+{
+	if (tableName.length == 0) {
+		tableName = @"Localizable";
+	}
+	
+	// keyVariant: key##{form}
+	
+	NSString *lang = locale;
+	NSRange range = [locale rangeOfString:@"-"];
+	if (range.location != NSNotFound) {
+		lang = [locale substringToIndex:range.location];
+	}
+	
+	const char* form = pluralformf([lang cStringUsingEncoding:NSASCIIStringEncoding], pluralValue);
+	char suffix[16] = "##{";
+	strcat(suffix, form);
+	strcat(suffix, "}");
+	NSString *keyVariant = [key stringByAppendingString:[NSString stringWithUTF8String:suffix]];
+	NSDictionary *dict = [self stringsWithContentsOfFile:tableName forLocalization:locale];
+	NSString *ls = dict[keyVariant];
+	
+	if (!ls && self.shouldReportNonLocalizedStrings) {
+		NSLog(@"Missing %@ localization for \"%@\"", locale.uppercaseString, keyVariant);
+		return [keyVariant uppercaseString];
+	}
+	
+	return ls;
 }
 
 - (NSDictionary *)stringsWithContentsOfFile:(NSString *)path forLocalization:(NSString *)lang

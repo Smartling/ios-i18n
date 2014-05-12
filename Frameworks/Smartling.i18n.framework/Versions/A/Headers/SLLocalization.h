@@ -27,7 +27,16 @@
 
 @interface NSBundle (Smartling_i18n)
 
-- (NSString *)pluralizedStringWithKey:(NSString *)key defaultValue:(NSString *)defaultValue table:(NSString *)tableName pluralValue:(float)pluralValue NS_FORMAT_ARGUMENT(1);
+- (NSString *)pluralizedStringWithKey:(NSString *)key
+						 defaultValue:(NSString *)defaultValue
+								table:(NSString *)tableName
+						  pluralValue:(float)pluralValue NS_FORMAT_ARGUMENT(1);
+
+- (NSString *)pluralizedStringWithKey:(NSString *)key
+						 defaultValue:(NSString *)defaultValue
+								table:(NSString *)tableName
+						  pluralValue:(float)pluralValue
+					  forLocalization:(NSString *)locale NS_FORMAT_ARGUMENT(1);
 
 @end
 
