@@ -20,6 +20,9 @@ Update your podfile with
 3. In the `Build Settings` of your target add **-ObjC** to **Other Linker Flags**.
 4. `#import <Smartling.i18n/SLLocalization.h>`
 
+### Carthage
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 ## Usage
 
 ### Plurals
