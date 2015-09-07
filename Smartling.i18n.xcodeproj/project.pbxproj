@@ -198,7 +198,7 @@
 		C4F6A0A816F3100B0058DFDA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = Smartling;
 				TargetAttributes = {
 					C474B8931B061494000CD76D = {
