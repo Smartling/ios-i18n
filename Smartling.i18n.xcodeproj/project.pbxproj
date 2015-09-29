@@ -198,7 +198,7 @@
 		C4F6A0A816F3100B0058DFDA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Smartling;
 				TargetAttributes = {
 					C474B8931B061494000CD76D = {
@@ -276,7 +276,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SL_FRAMEWORK_SCRIPT_RUNNING ]]; then\n  exit 0\nfi\nset -u\nexport SL_FRAMEWORK_SCRIPT_RUNNING=1\n\nSL_FRAMEWORK_NAME=${PROJECT_NAME}\nSL_INPUT_STATIC_LIB=\"lib${PROJECT_NAME}.a\"\nSL_FRAMEWORK_LOCATION=\"${BUILT_PRODUCTS_DIR}/${SL_FRAMEWORK_NAME}.framework\"\n\n\nfunction build_static_library {\n    # Will rebuild the static library as specified\n    #     build_static_library sdk\n    xcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" \\\n    -target \"${TARGET_NAME}\" \\\n    -configuration \"${CONFIGURATION}\" \\\n    -sdk \"${1}\" \\\n    ONLY_ACTIVE_ARCH=NO \\\n    BUILD_DIR=\"${BUILD_DIR}\" \\\n    OBJROOT=\"${OBJROOT}\" \\\n    BUILD_ROOT=\"${BUILD_ROOT}\" \\\n    SYMROOT=\"${SYMROOT}\" $ACTION\n}\n\nfunction make_fat_library {\n    # Will smash 2 static libs together\n    #     make_fat_library in1 in2 out\n    xcrun lipo -create \"${1}\" \"${2}\" -output \"${3}\"\n}\n\n\n# 1 - Extract the platform (iphoneos/iphonesimulator) from the SDK name\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]; then\n  SL_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\n  echo \"Could not find platform name from SDK_NAME: $SDK_NAME\"\n  exit 1\nfi\n\n# 2 - Extract the version from the SDK\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]; then\n  SL_SDK_VERSION=${BASH_REMATCH[1]}\nelse\n  echo \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\n  exit 1\nfi\n\n# 3 - Determine the other platform\nif [ \"$SL_SDK_PLATFORM\" == \"iphoneos\" ]; then\n  SL_OTHER_PLATFORM=iphonesimulator\nelse\n  SL_OTHER_PLATFORM=iphoneos\nfi\n\n# 4 - Find the build directory\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SL_SDK_PLATFORM$ ]]; then\n  SL_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SL_OTHER_PLATFORM}\"\nelse\n  echo \"Could not find other platform build directory.\"\n  exit 1\nfi\n\n# Build the other platform.\nbuild_static_library \"${SL_OTHER_PLATFORM}${SL_SDK_VERSION}\"\n\n# If we're currently building for iphonesimulator, then need to rebuild\n#   to ensure that we get both i386 and x86_64\nif [ \"$SL_SDK_PLATFORM\" == \"iphonesimulator\" ]; then\n  build_static_library \"${SDK_NAME}\"\nfi\n\n# Join the 2 static libs into 1 and push into the .framework\nmake_fat_library \"${BUILT_PRODUCTS_DIR}/${SL_INPUT_STATIC_LIB}\" \\\n  \"${SL_OTHER_BUILT_PRODUCTS_DIR}/${SL_INPUT_STATIC_LIB}\" \\\n  \"${SL_FRAMEWORK_LOCATION}/Versions/A/${SL_FRAMEWORK_NAME}\"\n\n# Ensure that the framework is present in both platform's build directories\ncp -a \"${SL_FRAMEWORK_LOCATION}/Versions/A/${SL_FRAMEWORK_NAME}\" \\\n  \"${SL_OTHER_BUILT_PRODUCTS_DIR}/${SL_FRAMEWORK_NAME}.framework/Versions/A/${SL_FRAMEWORK_NAME}\"\n\n# Verify\nlipo \"${SL_FRAMEWORK_LOCATION}/Versions/A/${SL_FRAMEWORK_NAME}\" -verify_arch armv7 armv7s arm64 i386 x86_64\n";
+			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SL_FRAMEWORK_SCRIPT_RUNNING ]]; then\n  exit 0\nfi\nset -u\nexport SL_FRAMEWORK_SCRIPT_RUNNING=1\n\nSL_FRAMEWORK_NAME=${PROJECT_NAME}\nSL_INPUT_STATIC_LIB=\"lib${PROJECT_NAME}.a\"\nSL_FRAMEWORK_LOCATION=\"${BUILT_PRODUCTS_DIR}/${SL_FRAMEWORK_NAME}.framework\"\n\n\nfunction build_static_library {\n    # Will rebuild the static library as specified\n    #     build_static_library sdk\n    xcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" \\\n    -target \"${TARGET_NAME}\" \\\n    -configuration \"${CONFIGURATION}\" \\\n    -sdk \"${1}\" \\\n    ONLY_ACTIVE_ARCH=NO \\\n    BUILD_DIR=\"${BUILD_DIR}\" \\\n    OBJROOT=\"${OBJROOT}\" \\\n    BUILD_ROOT=\"${BUILD_ROOT}\" \\\n    SYMROOT=\"${SYMROOT}\" $ACTION\n}\n\nfunction make_fat_library {\n    # Will smash 2 static libs together\n    #     make_fat_library in1 in2 out\n    xcrun lipo -create \"${1}\" \"${2}\" -output \"${3}\"\n}\n\n\n# 1 - Extract the platform (iphoneos/iphonesimulator) from the SDK name\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]; then\n  SL_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\n  echo \"Could not find platform name from SDK_NAME: $SDK_NAME\"\n  exit 1\nfi\n\n# 2 - Extract the version from the SDK\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]; then\n  SL_SDK_VERSION=${BASH_REMATCH[1]}\nelse\n  echo \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\n  exit 1\nfi\n\n# 3 - Determine the other platform\nif [ \"$SL_SDK_PLATFORM\" == \"iphoneos\" ]; then\n  SL_OTHER_PLATFORM=iphonesimulator\nelse\n  SL_OTHER_PLATFORM=iphoneos\nfi\n\n# 4 - Find the build directory\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SL_SDK_PLATFORM$ ]]; then\n  SL_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SL_OTHER_PLATFORM}\"\nelse\n  echo \"Could not find other platform build directory.\"\n  exit 1\nfi\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/lipo.temp\"\ncp \"${BUILT_PRODUCTS_DIR}/${SL_INPUT_STATIC_LIB}\" \"${BUILT_PRODUCTS_DIR}/lipo.temp/1.a\"\n\n# Build the other platform.\nbuild_static_library \"${SL_OTHER_PLATFORM}${SL_SDK_VERSION}\"\n\ncp \"${SL_OTHER_BUILT_PRODUCTS_DIR}/${SL_INPUT_STATIC_LIB}\" \"${BUILT_PRODUCTS_DIR}/lipo.temp/2.a\"\n    \n# If we're currently building for iphonesimulator, then need to rebuild\n#   to ensure that we get both i386 and x86_64\nif [ \"$SL_SDK_PLATFORM\" == \"iphonesimulator\" ]; then\n  build_static_library \"${SDK_NAME}\"\n  cp \"${BUILT_PRODUCTS_DIR}/${SL_INPUT_STATIC_LIB}\" \"${BUILT_PRODUCTS_DIR}/lipo.temp/1.a\"\nfi\n\necho \"${BUILT_PRODUCTS_DIR}/lipo.temp\"\nls -Gla \"${BUILT_PRODUCTS_DIR}/lipo.temp\"\n\n\n# Join the 2 static libs into 1 and push into the .framework\nmake_fat_library \"${BUILT_PRODUCTS_DIR}/lipo.temp/1.a\" \\\n  \"${BUILT_PRODUCTS_DIR}/lipo.temp/2.a\" \\\n  \"${SL_FRAMEWORK_LOCATION}/Versions/A/${SL_FRAMEWORK_NAME}\"\n\n# Ensure that the framework is present in both platform's build directories\ncp -a \"${SL_FRAMEWORK_LOCATION}/Versions/A/${SL_FRAMEWORK_NAME}\" \\\n  \"${SL_OTHER_BUILT_PRODUCTS_DIR}/${SL_FRAMEWORK_NAME}.framework/Versions/A/${SL_FRAMEWORK_NAME}\"\n\n# Verify\nlipo \"${SL_FRAMEWORK_LOCATION}/Versions/A/${SL_FRAMEWORK_NAME}\" -verify_arch armv7 armv7s arm64 i386 x86_64\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -343,6 +343,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smartling.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Headers";
 				SKIP_INSTALL = YES;
@@ -380,6 +381,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smartling.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Headers";
 				SKIP_INSTALL = YES;
@@ -407,6 +409,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
