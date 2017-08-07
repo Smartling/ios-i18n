@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'Smartling.i18n'
-  s.version      = '1.0.13'
+  s.version      = '1.0.14'
   s.summary      = 'iOS Plurals Localization Library'
   s.homepage     = 'https://github.com/Smartling/ios-i18n'
   s.license      = { :type => 'APACHE', :file => 'LICENSE' }
