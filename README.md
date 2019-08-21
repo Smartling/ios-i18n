@@ -1,6 +1,8 @@
 # Smartling.i18n.framework
 iOS 6+ Plurals Localization Library
 
+**Note: this library was designed to support plurals in iOS 6. As of iOS 7, Apple added support for plurals via string dictionaries. New projects should use Apple’s native plural support. This library has been deprecated.**
+
 iOS (pre-iOS 7) localization did not support plural functionality out of the box. The **ios-i18n** library was designed to bridge that gap and provide a means for developers to seamlessly integrate plurals into their localized apps across any number of locales.
 
 As of iOS 7 and Mac OS X 10.9 Mavericks, Foundation has the ability to specify localized strings according to pluralization and grammar rules. You can find more about this in the [Handling Noun Plurals and Units of Measurement](https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/LocalizingYourApp/LocalizingYourApp.html) section of the Internationalization and Localization Guide.
